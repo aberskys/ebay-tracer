@@ -1,0 +1,8 @@
+services:
+  api.service_call:
+    class: ApiBundle\Service\ServiceCall
+    arguments:
+      - "@guzzle.client"
+
+  guzzle.client:
+    class: GuzzleHttp\Client

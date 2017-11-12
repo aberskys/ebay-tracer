@@ -1,0 +1,5 @@
+services:
+  repo.item:
+    class: ApiBundle\Repository\ItemRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments: [ApiBundle\Entity\Item]

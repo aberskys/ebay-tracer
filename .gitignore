@@ -1,0 +1,8 @@
+gateway-service/app/config/parameters.yml
+items-service/app/config/parameters.yml
+orders-service/app/config/parameters.yml
+users-service/app/config/parameters.yml
+*/vendor/*
+*/var/*
+/.idea/
+/docker-compose.yml

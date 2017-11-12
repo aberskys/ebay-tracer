@@ -1,0 +1,15 @@
+security:
+  encoders:
+    ApiBundle\Entity\User:
+      id: api.password_encoder
+  providers:
+    in_memory:
+      memory: ~
+
+  firewalls:
+      dev:
+        pattern: ^/(_(profiler|wdt)|css|images|js)/
+        security: false
+
+      main:
+        anonymous: ~

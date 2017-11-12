@@ -1,0 +1,7 @@
+# This file is auto-generated during the composer install
+parameters:
+  secret: ThisTokenIsNotSoSecretChangeIt
+  items_host: items
+  orders_host: orders
+  users_host: users
+  auth_token: secretTokenForCommunications

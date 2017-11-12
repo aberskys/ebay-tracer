@@ -1,0 +1,96 @@
+version: "2"
+services:
+  items_php:
+    image: datadoglt/php71-web
+    links:
+      - items_mysql
+    ports:
+      - 80
+    volumes:
+      - "./items-service:/var/www"
+      - "./items-service/app/Resources/docker/init.sh:/init.sh"
+    environment:
+      APP_FILE: app_dev
+      PUB_DIR: web
+    env_file:
+      - ".env"
+    networks:
+      default:
+        aliases:
+          - items
+
+  items_mysql:
+    image: mysql
+    hostname: items_mysql
+    ports:
+      - "3306"
+    env_file:
+      - ".env"
+
+  orders_php:
+    image: datadoglt/php71-web
+    links:
+      - orders_mysql
+    ports:
+      - 80
+    volumes:
+      - "./orders-service:/var/www"
+      - "./orders-service/app/Resources/docker/init.sh:/init.sh"
+    environment:
+      APP_FILE: app_dev
+      PUB_DIR: web
+    env_file:
+      - ".env"
+    networks:
+      default:
+        aliases:
+          - orders
+
+  orders_mysql:
+    image: mysql
+    hostname: orders_mysql
+    ports:
+      - "3306"
+    env_file:
+      - ".env"
+
+  users_php:
+      image: datadoglt/php71-web
+      links:
+        - users_mysql
+      ports:
+        - 80
+      volumes:
+        - "./users-service:/var/www"
+        - "./users-service/app/Resources/docker/init.sh:/init.sh"
+      environment:
+        APP_FILE: app_dev
+        PUB_DIR: web
+      env_file:
+        - ".env"
+      networks:
+        default:
+          aliases:
+            - users
+
+  users_mysql:
+    image: mysql
+    hostname: users_mysql
+    ports:
+      - "3306"
+    env_file:
+      - ".env"
+
+  gateway_php:
+    image: datadoglt/php71-web
+    ports:
+      - 38080:80
+    volumes:
+      - "./gateway-service:/var/www"
+      - "./gateway-service/app/Resources/docker/init.sh:/init.sh"
+    environment:
+      APP_FILE: app_dev
+      PUB_DIR: web
+
+networks:
+  default:

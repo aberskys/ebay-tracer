@@ -91,6 +91,10 @@ services:
     environment:
       APP_FILE: app_dev
       PUB_DIR: web
+    networks:
+      default:
+        aliases:
+          - gateway
 
 networks:
   default:
